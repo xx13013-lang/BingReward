@@ -1,11 +1,497 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
-    "MyTask4": {
+    "开始微软必应": {
+        "action": "StartApp",
+        "package": "com.microsoft.bing",
+        "next": "头像"
+    },
+    "头像": {
+        "recognition": "TemplateMatch",
+        "template": "touxiang.png",
+        "action": "click",
+        "next": "进入积分页面"
+    },
+    "进入积分页面": {
+        "recognition": "OCR",
+        "expected": "总积分",
+        "action": "click",
+        "post_delay": 1000,
+        "next":"签到"
+
+    },
+    "签到": {
+        "recognition": "TemplateMatch",
+        "roi" : [12,416,693,201],
+        "template": "qiandao.png",
+        "action": "click",
+        "next": "每日活动"
+    },
+    "每日活动": {
+        "next": ["活动计数检查","下滑积分界面"]
+    },
+    "活动计数检查": {
         "recognition": "Custom",
-        "custom_recognition": "my_reco_222",
+        "custom_recognition": "NullReco",
         "action": "Custom",
-        "custom_action": "my_action_111"
+        "custom_action": "Count",
+        "custom_action_param": {
+            "count": 0,
+            "target_count": 6,
+            "next_node": ["每日阅读"],
+            "else_node": ["进入活动", "活动计数检查"],
+            "next_node_msg": "已完成6次活动，开始每日阅读",
+            "else_node_msg": "继续执行第{count}次活动",
+            "count_msg": "当前活动进度: {count}/10次"
+        }
+    },
+    "进入活动": {
+        "recognition": "TemplateMatch",
+        "template": "meirihuodong.png",
+        "action": "click",
+        "post_delay": 5000,
+        "next": "return"
+    },
+    "return": {
+        "recognition": "OCR",
+        "expected": ["今日积分"],
+        "inverse": true,
+        "action": "key",
+        "key": 4,
+        "next": []
+    },
+    "下滑积分界面": {
+        "action": "Swipe",
+        "begin": [
+            100,500,0,0
+        ],
+        "end": [
+            100,100,10,10
+        ],
+        "next": "每日阅读"
+    },
+
+    "每日阅读": {
+        "recognition": "TemplateMatch",
+        "template": "yuedu.png",
+        "action":"click",
+        "target_offset": [555,0,0,0],
+        "next": [
+            "开始阅读1"
+        ]
+    },
+    "开始阅读1": {
+        "next":["下滑1"]
+    },
+    "下滑1": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读1"
+    },
+    "进入阅读1": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return1"
+    },
+    "return1": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读2"]
+    },
+    "开始阅读2": {
+        "next":["下滑2"]
+    },
+    "下滑2": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读2"
+    },
+    "进入阅读2": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return2"
+    },
+    "return2": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读3"]
+    },
+    "开始阅读3": {
+        "next":["下滑3"]
+    },
+    "下滑3": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读3"
+    },
+    "进入阅读3": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return3"
+    },
+    "return3": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读4"]
+    },
+    "开始阅读4": {
+        "next":["下滑4"]
+    },
+    "下滑4": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读4"
+    },
+    "进入阅读4": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return4"
+    },
+    "return4": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读5"]
+    },
+    "开始阅读5": {
+        "next":["下滑5"]
+    },
+    "下滑5": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读5"
+    },
+    "进入阅读5": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return5"
+    },
+    "return5": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读6"]
+    },
+    "开始阅读6": {
+        "next":["下滑6"]
+    },
+    "下滑6": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读6"
+    },
+    "进入阅读6": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return6"
+    },
+    "return6": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读7"]
+    },
+    "开始阅读7": {
+        "next":["下滑7"]
+    },
+    "下滑7": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读7"
+    },
+    "进入阅读7": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return7"
+    },
+    "return7": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读8"]
+    },
+    "开始阅读8": {
+        "next":["下滑8"]
+    },
+    "下滑8": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读8"
+    },
+    "进入阅读8": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return8"
+    },
+    "return8": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读9"]
+    },
+    "开始阅读9": {
+        "next":["下滑9"]
+    },
+    "下滑9": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读9"
+    },
+    "进入阅读9": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return9"
+    },
+    "return9": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读10"]
+    },
+    "开始阅读10": {
+        "next":["下滑10"]
+    },
+    "下滑10": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读10"
+    },
+    "进入阅读10": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return10"
+    },
+    "return10": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读11"]
+    },
+    "开始阅读11": {
+        "next":["下滑11"]
+    },
+    "下滑11": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读11"
+    },
+    "进入阅读11": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return11"
+    },
+    "return11": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读12"]
+    },
+    "开始阅读12": {
+        "next":["下滑12"]
+    },
+    "下滑12": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读12"
+    },
+    "进入阅读12": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return12"
+    },
+    "return12": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读13"]
+    },
+    "开始阅读13": {
+        "next":["下滑13"]
+    },
+    "下滑13": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读13"
+    },
+    "进入阅读13": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return13"
+    },
+    "return13": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读14"]
+    },
+    "开始阅读14": {
+        "next":["下滑14"]
+    },
+    "下滑14": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读14"
+    },
+    "进入阅读14": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return14"
+    },
+    "return14": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读15"]
+    },
+    "开始阅读15": {
+        "next":["下滑15"]
+    },
+    "下滑15": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读15"
+    },
+    "进入阅读15": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return15"
+    },
+    "return15": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读16"]
+    },
+    "开始阅读16": {
+        "next":["下滑16"]
+    },
+    "下滑16": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读16"
+    },
+    "进入阅读16": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return16"
+    },
+    "return16": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读17"]
+    },
+    "开始阅读17": {
+        "next":["下滑17"]
+    },
+    "下滑17": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读17"
+    },
+    "进入阅读17": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return17"
+    },
+    "return17": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读18"]
+    },
+    "开始阅读18": {
+        "next":["下滑18"]
+    },
+    "下滑18": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读18"
+    },
+    "进入阅读18": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return18"
+    },
+    "return18": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读19"]
+    },
+    "开始阅读19": {
+        "next":["下滑19"]
+    },
+    "下滑19": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读19"
+    },
+    "进入阅读19": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return19"
+    },
+    "return19": {
+        "action": "key",
+        "key": 4,
+        "next": ["开始阅读20"]
+    },
+    "开始阅读20": {
+        "next":["下滑20"]
+    },
+    "下滑20": {
+        "action": "Swipe",
+        "begin": [100,500,0,0],
+        "end": [100,100,10,10],
+        "next": "进入阅读20"
+    },
+    "进入阅读20": {
+        "action": "click",
+        "target": [15,193,674,946],
+        "post_delay": 10000,
+        "next": "return20"
+    },
+    "return20": {
+        "action": "key",
+        "key": 4,
+        "next": []
+    },
+
+    "end": {
+    },
+    "计数器-背包滑动次数10": {
+        "action": "Custom",
+        "custom_action": "countGlobal",
+        "custom_action_param": {
+            "target_count": 10,
+            "nextTask": "下滑",
+            "LoopNode": "return"
+        }
+    },
+    "结束微软必应": {
+        "action": "StopApp",
+        "package": "com.microsoft.bing"
     }
 }
