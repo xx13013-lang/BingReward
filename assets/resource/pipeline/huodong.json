@@ -1,0 +1,42 @@
+{
+    "进入活动":{
+        "next":"进入活动1"
+    },
+
+    "进入活动1": {
+        "recognition": "TemplateMatch",
+        "template": "meirihuodong.png",
+        "action": "click",
+        "post_delay": 5000,
+        "next": "活动return1"
+    },
+    "活动return1": {
+        "action": "key",
+        "key": 4,
+        "next": "进入活动2"
+    },
+    "进入活动2": {
+        "recognition": "TemplateMatch",
+        "template": "meirihuodong.png",
+        "action": "click",
+        "post_delay": 5000,
+        "next": "活动return2"
+    },
+    "活动return2": {
+        "action": "key",
+        "key": 4,
+        "next": "进入活动3"
+    },    
+    "进入活动3": {
+        "recognition": "TemplateMatch",
+        "template": "meirihuodong.png",
+        "action": "click",
+        "post_delay": 5000,
+        "next": "活动return3"
+    },
+    "活动return3": {
+        "action": "key",
+        "key": 4,
+        "next": []
+    }
+}

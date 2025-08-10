@@ -1,0 +1,102 @@
+{
+    "启动软件并进入积分界面": {
+        "action": "StartApp",
+        "package": "com.microsoft.bing",
+        "next": "头像"
+    },
+    "头像": {
+        "recognition": "TemplateMatch",
+        "template": "touxiang.png",
+        "action": "click",
+        "next": "进入积分页面"
+    },
+    "进入积分页面": {
+        "recognition": "OCR",
+        "expected": "总积分",
+        "action": "click",
+        "post_delay": 5000,
+        "next": "积分页面确认进入"
+    },
+
+    "积分页面确认进入": {
+        "recognition": "OCR",
+        "expected": "今日积分",
+        "next": []
+    },
+    "签到":{
+        "next":["第7天签到","每日签到"]
+    },
+    "每日签到": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            6,
+            433,
+            713,
+            382
+        ],
+        "template": "qiandao.png",
+        "action": "click",
+        "post_delay": 5000,
+        "next": []
+    },
+
+    "第7天签到": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            6,
+            433,
+            713,
+            382
+        ],
+        "template": "7dayqiandao.png",
+        "action": "click",
+        "post_delay": 5000,
+        "next": []
+    },
+
+    "下滑积分界面并开始阅读": {
+        "action": "Swipe",
+        "begin": [116,917,119,56],
+        "end": [407,370,186,90],
+        "post_delay": 3000,
+        "duration":2000,
+        "next": "下滑第二次"
+    },  
+    "下滑第二次": {
+        "action": "Swipe",
+        "begin": [
+            100,
+            900,
+            0,
+            0
+        ],
+        "end": [
+            100,
+            150,
+            10,
+            10
+        ],
+        "duration":2000,
+        "post_delay": 5000,
+        "next": "每日阅读"
+    },  
+    "每日阅读": {
+        "recognition": "TemplateMatch",
+        "template": "yuedu.png",
+        "action": "click",
+        "target_offset": [
+            555,
+            0,
+            0,
+            0
+        ],
+        "next": [
+            "开始阅读1"
+        ]
+    },
+    "end": {},
+    "关闭微软必应": {
+        "action": "StopApp",
+        "package": "com.microsoft.bing"
+    }
+}

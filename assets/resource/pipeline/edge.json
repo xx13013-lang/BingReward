@@ -1,0 +1,126 @@
+{
+    "开始edge搜索": {
+        "action": "StartApp",
+        "package": "com.microsoft.emmx",
+        "post_delay":10000,
+        "next": [
+            "清除旧脚本",
+            "点击搜索框",
+            "设置1-1",
+            "设置1-2"
+        ]
+    },
+    "清除旧脚本":{
+        "recognition":"TemplateMatch",
+        "template":"tingzhi.png",
+        "action": "click",
+        "post_delay":2000,
+        "next": [
+            "点击搜索框",
+            "设置1-1",
+            "设置1-2"
+        ]
+    },
+    "点击搜索框":{
+        "recognition":"OCR",
+        "expected":"搜索或键入URL",
+        "action": "click",
+        "next":"进入bing.com"
+    },
+
+    "进入bing.com": {
+        "action": "InputText",
+        "input_text":"bing.com",
+        "next": "enter"
+    },
+    "enter":{
+        "action": "key",
+        "key": 66,
+        "next": "设置1-1"
+    },
+    "设置1-1":{
+        "recognition":"TemplateMatch",
+        "template": "setting.png",
+        "action":"click",
+        "next":"拓展"
+    },
+    "设置1-2":{
+        "recognition":"TemplateMatch",
+        "template": "setting2.png",
+        "action":"click",
+        "next":"拓展"
+    },
+    "拓展":{
+        "recognition":"TemplateMatch",
+        "template": "tuozhan.png",
+        "action":"click",
+        "next":"油猴"
+    },
+    "油猴":{
+        "recognition":"OCR",
+        "expected":"篡改猴",
+        "action":"click",
+        "next":"更新词条"
+    },
+    "更新词条":{
+        "recognition":"OCR",
+        "expected": "更新词条",
+        "action":"click",
+        "post_delay":5000,
+        "next":"获取词条成功"
+    },
+
+    "获取词条成功":{
+        "recognition":"OCR",
+        "expected": "确定",
+        "action":"click",
+        "post_delay":5000,
+        "next":["设置2-1","设置2-2"]
+    },
+
+    "设置2-1":{
+        "recognition":"TemplateMatch",
+        "template": "setting.png",
+        "action":"click",
+        "next":"拓展1"
+    },
+    "设置2-2":{
+        "recognition":"TemplateMatch",
+        "template": "setting2.png",
+        "action":"click",
+        "next":"拓展1"
+    },
+    "拓展1":{
+        "recognition":"TemplateMatch",
+        "template": "tuozhan.png",
+        "action":"click",
+        "next":"油猴1"
+    },
+    "油猴1":{
+        "recognition":"OCR",
+        "expected":"篡改猴",
+        "action": "click",
+        "post_delay":2000,
+        "next":"获取积分"
+
+    },
+    "获取积分":{
+        "recognition":"OCR",
+        "expected": "获取积分2",
+        "action":"click",
+        "post_delay":2000,
+        "next":"获取积分1"
+    },
+    "获取积分2":{
+        "recognition":"OCR",
+        "expected": "获取积分2",
+        "action":"click",
+        "post_delay":900000,
+        "next":"结束edge搜索"
+    },
+    "结束edge搜索": {
+        "action": "StopApp",
+        "package": "com.microsoft.emmx",
+        "next": []
+    }
+}
